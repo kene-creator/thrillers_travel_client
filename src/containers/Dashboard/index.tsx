@@ -65,7 +65,6 @@ function Dashboard() {
   }, [fetchTransactionHistory, user]);
 
   const performTransaction = async (transactionDetails: any) => {
-    console.log(transactionDetails);
     try {
       const response = await fetch("http://localhost:3001/transactions", {
         method: "POST",
@@ -76,7 +75,6 @@ function Dashboard() {
         body: JSON.stringify(transactionDetails),
       });
       if (response.ok) {
-        // Transaction successful, update transaction history
         fetchTransactionHistory();
       } else {
         console.error("Failed to perform transaction");
@@ -99,7 +97,6 @@ function Dashboard() {
   }, [user]);
 
   const renderedTransactionHistory = useMemo(() => {
-    console.log(transactionHistory);
     if (Array.isArray(transactionHistory) && transactionHistory.length > 0) {
       return (
         <div className="mt-16">
